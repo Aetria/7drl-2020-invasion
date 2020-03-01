@@ -1,0 +1,9 @@
+# Godot specifics
+.import/
+
+# Game's binaries
+bin/
+
+# Windows specifics
+Thumbs.db
+*~
