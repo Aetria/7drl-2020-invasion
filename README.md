@@ -21,3 +21,10 @@ So technically and ideally, version 1.0 will be out at most the March 8th at 10:
   - Key mapping
 - Monster list
 - Planing the game on paper
+
+**Done**:
+- Defining the grid and game size
+  - Game screen: 592x800
+  - Sprite size: 16x16
+  - 4 bottom lines reserved for the game log
+  - TO Define: space on the left or right for the player infos
