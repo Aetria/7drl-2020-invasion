@@ -19,6 +19,10 @@ config/name="Invasion"
 run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://scripts/global.gd"
+
 [display]
 
 window/size/width=800

@@ -1,39 +1,41 @@
 extends KinematicBody2D
 
 const tileSize = 16
-const logLines = 4
-var gameHeight = ProjectSettings.get_setting("display/window/size/height")
-var gameWidth = ProjectSettings.get_setting("display/window/size/width")
+const top    = 32
+const left   = 144
+const right  = 752
+const bottom = 496
 
 func get_input():
+	var newPosition = position
+	
 	if Input.is_action_just_pressed('ui_right'):
-		position.x += tileSize
-		if position.x >= gameWidth - tileSize: position.x = gameWidth - tileSize
-	if Input.is_action_just_pressed('ui_left'):
-		position.x -= tileSize
-		if position.x <= 0: position.x = 0
-	if Input.is_action_just_pressed('ui_down'):
-		position.y += tileSize
-		if position.y >= gameHeight - (tileSize + logLines * tileSize): position.y = gameHeight - (tileSize + logLines * tileSize)
-	if Input.is_action_just_pressed('ui_up'):
-		position.y -= tileSize
-		if position.y <= 0: position.y = 0
-	if Input.is_action_just_pressed('ui_left_up'):
-		position += Vector2(-tileSize, -tileSize)
-		if position.x <= 0: position.x = 0
-		if position.y <= 0: position.y = 0
-	if Input.is_action_just_pressed("ui_left_down"):
-		position += Vector2(-tileSize, tileSize)
-		if position.x <= 0: position.x = 0
-		if position.y >= gameHeight - (tileSize + logLines * tileSize): position.y = gameHeight - (tileSize + logLines * tileSize)
-	if Input.is_action_just_pressed("ui_right_down"):
-		position += Vector2(tileSize, tileSize)
-		if position.x >= gameWidth - tileSize: position.x = gameWidth - tileSize
-		if position.y >= gameHeight - (tileSize + logLines * tileSize): position.y = gameHeight - (tileSize + logLines * tileSize)
-	if Input.is_action_just_pressed("ui_right_up"):
-		position += Vector2(tileSize, -tileSize)
-		if position.x >= gameWidth - tileSize: position.x = gameWidth - tileSize
-		if position.y <= 0: position.y = 0
+		newPosition += Vector2( tileSize,         0)
+	elif Input.is_action_just_pressed('ui_left'):
+		newPosition += Vector2(-tileSize,         0)
+	elif Input.is_action_just_pressed('ui_down'):
+		newPosition += Vector2(        0,  tileSize)
+	elif Input.is_action_just_pressed('ui_up'):
+		newPosition += Vector2(        0, -tileSize)
+	elif Input.is_action_just_pressed('ui_left_up'):
+		newPosition += Vector2(-tileSize, -tileSize)
+	elif Input.is_action_just_pressed("ui_left_down"):
+		newPosition += Vector2(-tileSize,  tileSize)
+	elif Input.is_action_just_pressed("ui_right_down"):
+		newPosition += Vector2( tileSize,  tileSize)
+	elif Input.is_action_just_pressed("ui_right_up"):
+		newPosition += Vector2( tileSize, -tileSize)
+	
+	if newPosition != position:
+		return is_action(newPosition)
+	return false
+
+func is_action(newPosition):
+	if newPosition.x >= left and newPosition.x <= right and newPosition.y >= top and newPosition.y <= bottom:
+		position = newPosition
+		global.tick()
+		return true
+	return false
 
 func _physics_process(_delta):
 	get_input()

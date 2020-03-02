@@ -26,5 +26,12 @@ So technically and ideally, version 1.0 will be out at most the March 8th at 10:
 - Defining the grid and game size
   - Game screen: 592x800
   - Sprite size: 16x16
-  - 4 bottom lines reserved for the game log
-  - TO Define: space on the left or right for the player infos
+  - 3 bottom lines reserved for the game log
+  - Some space reserved for the player/game infos
+- Adding the game log. Done and working!
+- TODO: player stats and characteristcs
+- TODO: same for monsters
+- TODO: list of actions and key mapping
+- TODO: planing more precisely the game
+
+At least that work, it is not bad, but I think I could have done better... And I still need to search how to do the pathfinding with Godot to let the monster reach the player.
