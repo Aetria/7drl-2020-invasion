@@ -1,4 +1,4 @@
 extends StaticBody2D
 
-func _process(_delta):
-	pass
+func play_turn():
+	print("My turn")

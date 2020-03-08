@@ -37,5 +37,6 @@ func is_action(newPosition):
 		return true
 	return false
 
-func _physics_process(_delta):
-	get_input()
+func play_turn():
+	if get_input():
+		emit_signal("completed")

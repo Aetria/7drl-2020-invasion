@@ -7,7 +7,7 @@ var played = true
 
 var game_log = ["", "", ""]
 
-var player
+var player:KinematicBody2D
 
 func tick():
 	minutes += timeStep
